@@ -1,0 +1,423 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/intelFPGA_lite/18.1
+valtera_up_avalon_video_vga_timing
+!s110 1569443633
+!i10b 1
+!s100 jgDZ_i]hm02j6<?IS`^_V3
+I@0S8n8^JY:HAD];?H6GFH1
+Z0 VDg1SIo80bB@j0V0VzS_@n1
+Z1 dC:/Users/Arian/Desktop/lab3
+Z2 w1474167514
+8C:/Users/Arian/Desktop/lab3/vga.v
+FC:/Users/Arian/Desktop/lab3/vga.v
+L0 32
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1569443633.000000
+!s107 C:/Users/Arian/Desktop/lab3/vga.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/vga.v|
+!i113 1
+Z5 o-work work
+Z6 tCvgOpt 0
+vDetectWinner
+Z7 !s110 1569443634
+!i10b 1
+!s100 YHKcgWUGJk984k@9IzEP[0
+Il95agAB4E@hdD1Yz2DH<G1
+R0
+R1
+Z8 w1569443458
+8C:/Users/Arian/Desktop/lab3/detectwin.v
+FC:/Users/Arian/Desktop/lab3/detectwin.v
+L0 16
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/Users/Arian/Desktop/lab3/detectwin.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/detectwin.v|
+!i113 1
+R5
+R6
+n@detect@winner
+vEmpty
+Z9 !s110 1569443635
+!i10b 1
+!s100 fL_<O3naoVU:ZOY?Y=_[J0
+I^ML7cWdoAUm3H6`Q5YK7`1
+R0
+R1
+R8
+Z10 8C:/Users/Arian/Desktop/lab3/tictactoe.v
+Z11 FC:/Users/Arian/Desktop/lab3/tictactoe.v
+L0 145
+R3
+r1
+!s85 0
+31
+Z12 !s108 1569443634.000000
+Z13 !s107 C:/Users/Arian/Desktop/lab3/tictactoe.v|
+Z14 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/tictactoe.v|
+!i113 1
+R5
+R6
+n@empty
+vframebuffer
+R9
+!i10b 1
+!s100 XFkJkBY4a@D[2k;IHb`Ol3
+I_a8[1kMEDa71V3hb4Y=ZV1
+R0
+R1
+R2
+Z15 8C:/Users/Arian/Desktop/lab3/tictactoe_to_vga.v
+Z16 FC:/Users/Arian/Desktop/lab3/tictactoe_to_vga.v
+L0 252
+R3
+r1
+!s85 0
+31
+Z17 !s108 1569443635.000000
+Z18 !s107 C:/Users/Arian/Desktop/lab3/tictactoe_to_vga.v|
+Z19 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/tictactoe_to_vga.v|
+!i113 1
+R5
+R6
+vGameState
+R7
+!i10b 1
+!s100 R06clADGN?cBR^EgkG^4K2
+IP:INKfzFYb^Gb[@n4>O9Z0
+R0
+R1
+R2
+8C:/Users/Arian/Desktop/lab3/game_state.v
+FC:/Users/Arian/Desktop/lab3/game_state.v
+L0 1
+R3
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/Arian/Desktop/lab3/game_state.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/game_state.v|
+!i113 1
+R5
+R6
+n@game@state
+vlab3_top
+R7
+!i10b 1
+!s100 hBn_b3hUo6V:7VEih9Gc]0
+I0chFH^OAMAS5gRV8e1o_j3
+R0
+R1
+w1474167828
+8C:/Users/Arian/Desktop/lab3/lab3_top.v
+FC:/Users/Arian/Desktop/lab3/lab3_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R12
+!s107 C:/Users/Arian/Desktop/lab3/lab3_top.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/lab3_top.v|
+!i113 1
+R5
+R6
+vRAM
+R7
+!i10b 1
+!s100 :g:cBam^K7GjYMDnEG?mj2
+I4N1YkA^3e6H^>XjEZ_AZ:2
+R0
+R1
+R2
+Z20 8C:/Users/Arian/Desktop/lab3/ff.v
+Z21 FC:/Users/Arian/Desktop/lab3/ff.v
+L0 83
+R3
+r1
+!s85 0
+31
+R12
+Z22 !s107 C:/Users/Arian/Desktop/lab3/ff.v|
+Z23 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/Arian/Desktop/lab3/ff.v|
+!i113 1
+R5
+R6
+n@r@a@m
+vRArb
+R9
+!i10b 1
+!s100 hJUM9E38fC0H]hRc`hMZM2
+I<cDT3]PUIZ@LkDTjLeA0=0
+R0
+R1
+R8
+R10
+R11
+L0 80
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R5
+R6
+n@r@arb
+vrasterizer
+R9
+!i10b 1
+!s100 gaYl9Vbogzl4`c1TMnVc@2
+IWK7Y^jDfLafGKP[IIJCoM1
+R0
+R1
+R2
+R15
+R16
+L0 79
+R3
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R5
+R6
+vROM
+R7
+!i10b 1
+!s100 aQ>F0@_^;f4_aZZ1<=WMj3
+IGS`C6VmPB>LN1<U^z0ozM2
+R0
+R1
+R2
+R20
+R21
+L0 62
+R3
+r1
+!s85 0
+31
+R12
+R22
+R23
+!i113 1
+R5
+R6
+n@r@o@m
+vSelect3
+R9
+!i10b 1
+!s100 Sl0kR5PiA^e[Xz^Wz:Do91
+IF3zEbD:T_o>zc7oLa3;4K2
+R0
+R1
+R8
+R10
+R11
+L0 154
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R5
+R6
+n@select3
+vTestTic
+R9
+!i10b 1
+!s100 oz;3UZlUOnTlV]iW:_Bl=3
+IeZOl[U?o<4QQzElWaKXn>0
+R0
+R1
+R8
+R10
+R11
+L0 165
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R5
+R6
+n@test@tic
+vTicTacToe
+R9
+!i10b 1
+!s100 c9FhoYn?=a=HY1H0cYhb61
+Id0OG<[efBMccbO_[5ISEF0
+R0
+R1
+R8
+R10
+R11
+L0 89
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R5
+R6
+n@tic@tac@toe
+vtictactoe_shader
+R9
+!i10b 1
+!s100 07;AOKi^DcNGhdfKY=m810
+IdcHTHPE2KO=c@9az0oH5K1
+R0
+R1
+R2
+R15
+R16
+L0 118
+R3
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R5
+R6
+vTicTacToe_to_VGA
+R9
+!i10b 1
+!s100 TC9cme8z4HAe?<7<neReH3
+I7K0UeEKjXlG[W=Bj==W[63
+R0
+R1
+R2
+R15
+R16
+L0 30
+R3
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R5
+R6
+n@tic@tac@toe_to_@v@g@a
+vTwoInArray
+R9
+!i10b 1
+!s100 ^[4C:=o@WU@MEb2h=Y_oh0
+Io@V3IoCJ45dkXh0MnS]OG0
+R0
+R1
+R8
+R10
+R11
+L0 101
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R5
+R6
+n@two@in@array
+vTwoInRow
+R9
+!i10b 1
+!s100 CK2BP<L;JFI1gb6UnSc7_3
+IUX46KJ]lQjml?zUzgKS8z3
+R0
+R1
+R8
+R10
+R11
+L0 135
+R3
+r1
+!s85 0
+31
+R12
+R13
+R14
+!i113 1
+R5
+R6
+n@two@in@row
+vvDFF
+R7
+!i10b 1
+!s100 IOzeoJ4^ReEE4K3Fnoj<V2
+I9mEmhnWMFmIX>d7=JX[`I2
+R0
+R1
+R2
+R20
+R21
+L0 35
+R3
+r1
+!s85 0
+31
+R12
+R22
+R23
+!i113 1
+R5
+R6
+nv@d@f@f
+vvDFFE
+R7
+!i10b 1
+!s100 ^30A^^mPGCM3[Yl8<J[oo1
+IBH2gMl0J_M>48z>8o2S]a3
+R0
+R1
+R2
+R20
+R21
+L0 48
+R3
+r1
+!s85 0
+31
+R12
+R22
+R23
+!i113 1
+R5
+R6
+nv@d@f@f@e
