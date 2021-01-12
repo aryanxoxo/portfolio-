@@ -1,0 +1,267 @@
+
+C:/Users/nickz/Desktop/CPEN211/Labs/lab11/pagetable.axf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000040 <CONFIG_VIRTUAL_MEMORY>:
+      .equ  TRANS_TABLE_N, 0
+      .equ  SECTION_SIZE, 0x100000
+
+      .global CONFIG_VIRTUAL_MEMORY
+CONFIG_VIRTUAL_MEMORY:
+      PUSH {R4-R9}
+  40:	e92d03f0 	push	{r4, r5, r6, r7, r8, r9}
+
+      /* Verify System Control Register contents */
+      MRC p15, 0, R0, c1, c0, 0 /* Read SCTLR into Rt */
+  44:	ee110f10 	mrc	15, 0, r0, cr1, cr0, {0}
+      LDR R1, =0x00C5187A
+  48:	e59f10a8 	ldr	r1, [pc, #168]	; f8 <CPT_RETURN+0x8>
+      CMP R0, R1
+  4c:	e1500001 	cmp	r0, r1
+      BNE CPT_ERROR
+  50:	1a000025 	bne	ec <CPT_ERROR>
+
+      LDR R6, =0x100000 /* address to try to read after MMU configured */
+  54:	e3a06601 	mov	r6, #1048576	; 0x100000
+      LDR R7, [R6]      /* R7 is contents of word at physical address 0x100000 */
+  58:	e5967000 	ldr	r7, [r6]
+      LDR R8, =0x200000 /* address to try to read after MMU configured */
+  5c:	e3a08602 	mov	r8, #2097152	; 0x200000
+      LDR R9, [R8]      /* R9 has contents of word at physical address 0x200000 */
+  60:	e5989000 	ldr	r9, [r8]
+
+      /* initialize level 1 translation table */
+               /*1111111111          */
+               /*98765432109876543210*/
+      LDR R1, =0b10000001110000001110    /* lower 20 bits of section descriptor for cacheable sections */
+  64:	e59f1090 	ldr	r1, [pc, #144]	; fc <CPT_RETURN+0xc>
+      LDR R2, =0b10000000110000000010    /* lower 20 bits of section descriptor for device sections */
+  68:	e59f2090 	ldr	r2, [pc, #144]	; 100 <CPT_RETURN+0x10>
+      LDR R3, =SECTION_SIZE
+  6c:	e3a03601 	mov	r3, #1048576	; 0x100000
+      LDR R4, =TRANS_TABLE_0_BASE
+  70:	e3a04201 	mov	r4, #268435456	; 0x10000000
+      MOV R0, #0  /* loop counter */
+  74:	e3a00000 	mov	r0, #0
+
+00000078 <CPT_L1>:
+CPT_L1: 
+      MUL   R5, R0, R3                     /* physical address of section */
+  78:	e0050390 	mul	r5, r0, r3
+      CMP   R0, #UNCACHABLE_START 
+  7c:	e3500b01 	cmp	r0, #1024	; 0x400
+      ORRLT R5, R5, R1
+  80:	b1855001 	orrlt	r5, r5, r1
+      ORRGE R5, R5, R2
+  84:	a1855002 	orrge	r5, r5, r2
+      STR   R5, [R4, R0, LSL #2]
+  88:	e7845100 	str	r5, [r4, r0, lsl #2]
+      ADD   R0, R0, #1
+  8c:	e2800001 	add	r0, r0, #1
+      CMP   R0, #0x1000
+  90:	e3500a01 	cmp	r0, #4096	; 0x1000
+      BLT   CPT_L1
+  94:	bafffff7 	blt	78 <CPT_L1>
+
+      /* for testing address translation: remap second two pages */
+      ADD R5, R1, R3
+  98:	e0815003 	add	r5, r1, r3
+      STR R5, [R4, #8]  /* virtual page 2 => physical page 1 */
+  9c:	e5845008 	str	r5, [r4, #8]
+      ADD R5, R1, R3, LSL #1
+  a0:	e0815083 	add	r5, r1, r3, lsl #1
+      STR R5, [R4, #4]  /* virtual page 1 => physical page 2 */
+  a4:	e5845004 	str	r5, [r4, #4]
+
+      /* set Translation Table Base Control Register */
+      MOV R0, #TRANS_TABLE_N
+  a8:	e3a00000 	mov	r0, #0
+      MCR p15, 0, R0, c2, c0, 2 /* TTBCR.N = 0 */
+  ac:	ee020f50 	mcr	15, 0, r0, cr2, cr0, {2}
+
+      /* set Translation Table Base Register 0 */
+      LDR R0,=TRANS_TABLE_0_BASE 
+  b0:	e3a00201 	mov	r0, #268435456	; 0x10000000
+      MCR p15, 0, R0, c2, c0, 0 /* TTBR0 = TRANS_TABLE_0_BASE */
+  b4:	ee020f10 	mcr	15, 0, r0, cr2, cr0, {0}
+
+      /* set Domain Access Control Register */
+      MOV R0, #1
+  b8:	e3a00001 	mov	r0, #1
+      MCR p15, 0, R0, c3, c0, 0 /* Domain 0 is client */
+  bc:	ee030f10 	mcr	15, 0, r0, cr3, cr0, {0}
+
+      /* set Context ID Register */
+      MOV R0, #0
+  c0:	e3a00000 	mov	r0, #0
+      MCR p15, 0, R0, c13, c0, 1 /* PROCID = 0, ACID = 0 */
+  c4:	ee0d0f30 	mcr	15, 0, r0, cr13, cr0, {1}
+
+      /* enable data cache and MMU */
+      MRC p15, 0, R0, c1, c0, 0 /* Read SCTLR into Rt */
+  c8:	ee110f10 	mrc	15, 0, r0, cr1, cr0, {0}
+      ORR R0, R0, #0b101
+  cc:	e3800005 	orr	r0, r0, #5
+      MCR p15, 0, R0, c1, c0, 0 /* Write Rt to SCTLR */ 
+  d0:	ee010f10 	mcr	15, 0, r0, cr1, cr0, {0}
+
+      ISB
+  d4:	f57ff06f 	isb	sy
+
+      LDR   R1, [R6] /* R1 has contents of memory at virtual address 0x100000 
+  d8:	e5961000 	ldr	r1, [r6]
+                        which should be physical address 0x200000 */
+
+      CMP   R1, R9   /* R1 should match R9 if address translation worked */
+  dc:	e1510009 	cmp	r1, r9
+      BNE   CPT_ERROR 
+  e0:	1a000001 	bne	ec <CPT_ERROR>
+
+      MOV   R0, #0
+  e4:	e3a00000 	mov	r0, #0
+      B     CPT_RETURN
+  e8:	ea000000 	b	f0 <CPT_RETURN>
+
+000000ec <CPT_ERROR>:
+CPT_ERROR:
+      MOV   R0, #1
+  ec:	e3a00001 	mov	r0, #1
+
+000000f0 <CPT_RETURN>:
+CPT_RETURN:
+      POP   {R4-R9}
+  f0:	e8bd03f0 	pop	{r4, r5, r6, r7, r8, r9}
+      BX    LR
+  f4:	e12fff1e 	bx	lr
+  f8:	00c5187a 	.word	0x00c5187a
+  fc:	00081c0e 	.word	0x00081c0e
+ 100:	00080c02 	.word	0x00080c02
+
+00000104 <_start>:
+.text
+.global _start
+_start:
+    BL CONFIG_VIRTUAL_MEMORY
+ 104:	ebffffcd 	bl	40 <CONFIG_VIRTUAL_MEMORY>
+
+    // Step 1-3: configure PMN0 to count cycles
+    MOV R0, #0 // Write 0 into R0 then PMSELR
+ 108:	e3a00000 	mov	r0, #0
+    MCR p15, 0, R0, c9, c12, 5 // Write 0 into PMSELR selects PMN0
+ 10c:	ee090fbc 	mcr	15, 0, r0, cr9, cr12, {5}
+    MOV R1, #0x11 // Event 0x11 is CPU cycles
+ 110:	e3a01011 	mov	r1, #17
+    MCR p15, 0, R1, c9, c13, 1 // Write 0x11 into PMXEVTYPER (PMN0 measure CPU cycles)
+ 114:	ee091f3d 	mcr	15, 0, r1, cr9, cr13, {1}
+
+    // Step 1-3: configure PMN1 to count instructions
+    MOV R7, #1 // Write 0 into R0 then PMSELR
+ 118:	e3a07001 	mov	r7, #1
+    MCR p15, 0, R7, c9, c12, 5 // Write 1 into PMSELR selects PMN1
+ 11c:	ee097fbc 	mcr	15, 0, r7, cr9, cr12, {5}
+    MOV R8, #0x6 // Event 0x6 is load instructions
+ 120:	e3a08006 	mov	r8, #6
+    MCR p15, 0, R8, c9, c13, 1 // Write 0x6 into PMXEVTYPER (PMN1 measure load instructions)
+ 124:	ee098f3d 	mcr	15, 0, r8, cr9, cr13, {1}
+
+    // Step 1-3: configure PMN2 to count cache misses
+    MOV R9, #2 // Write 0 into R0 then PMSELR
+ 128:	e3a09002 	mov	r9, #2
+    MCR p15, 0, R9, c9, c12, 5 // Write 2 into PMSELR selects PMN2
+ 12c:	ee099fbc 	mcr	15, 0, r9, cr9, cr12, {5}
+    MOV R10, #0x3 // Event 0x3 is load instructions
+ 130:	e3a0a003 	mov	r10, #3
+    MCR p15, 0, R10, c9, c13, 1 // Write 0x3 into PMXEVTYPER (PMN2 measure cache misses)
+ 134:	ee09af3d 	mcr	15, 0, r10, cr9, cr13, {1}
+
+    // Step 4: enable PMN0
+    mov R0, #1 // PMN0 is bit 0 of PMCNTENSET
+ 138:	e3a00001 	mov	r0, #1
+    MCR p15, 0, R0, c9, c12, 1 // Setting bit 0 of PMCNTENSET enables PMN0
+ 13c:	ee090f3c 	mcr	15, 0, r0, cr9, cr12, {1}
+
+    // Step 4: enable PMN1
+    mov R7, #1 // PMN0 is bit 0 of PMCNTENSET
+ 140:	e3a07001 	mov	r7, #1
+    MCR p15, 0, R7, c9, c12, 1 // Setting bit 0 of PMCNTENSET enables PMN1
+ 144:	ee097f3c 	mcr	15, 0, r7, cr9, cr12, {1}
+
+    // Step 4: enable PMN2
+    mov R9, #2 // PMN0 is bit 0 of PMCNTENSET
+ 148:	e3a09002 	mov	r9, #2
+    MCR p15, 0, R9, c9, c12, 1 // Setting bit 0 of PMCNTENSET enables PMN2
+ 14c:	ee099f3c 	mcr	15, 0, r9, cr9, cr12, {1}
+
+    // Step 5: clear all counters and start counters
+    mov r0, #3 // bits 0 (start counters) and 1 (reset counters)
+ 150:	e3a00003 	mov	r0, #3
+    MCR p15, 0, r0, c9, c12, 0 // Setting PMCR to 3
+ 154:	ee090f1c 	mcr	15, 0, r0, cr9, cr12, {0}
+    
+    // Step 6: code we wish to profile using hardware counters
+    mov r1, #0x00100000 // base of array
+ 158:	e3a01601 	mov	r1, #1048576	; 0x100000
+    mov r2, #0x100 // iterations of inner loop
+ 15c:	e3a02c01 	mov	r2, #256	; 0x100
+    mov r3, #2 // iterations of outer loop
+ 160:	e3a03002 	mov	r3, #2
+    mov r4, #0 // i=0 (outer loop counter)
+ 164:	e3a04000 	mov	r4, #0
+
+00000168 <L_outer_loop>:
+L_outer_loop:
+    mov r5, #0 // j=0 (inner loop counter)
+ 168:	e3a05000 	mov	r5, #0
+
+0000016c <L_inner_loop>:
+L_inner_loop:
+    ldr r6, [r1, r5, LSL #2] // read data from memory
+ 16c:	e7916105 	ldr	r6, [r1, r5, lsl #2]
+    add r5, r5, #1 // j=j+1
+ 170:	e2855001 	add	r5, r5, #1
+    cmp r5, r2 // compare j with 256
+ 174:	e1550002 	cmp	r5, r2
+    blt L_inner_loop // branch if less than
+ 178:	bafffffb 	blt	16c <L_inner_loop>
+    add r4, r4, #1 // i=i+1
+ 17c:	e2844001 	add	r4, r4, #1
+    cmp r4, r3 // compare i with 2
+ 180:	e1540003 	cmp	r4, r3
+    blt L_outer_loop // branch if less than
+ 184:	bafffff7 	blt	168 <L_outer_loop>
+
+    // Step 7: stop counters
+    mov r0, #0
+ 188:	e3a00000 	mov	r0, #0
+    MCR p15, 0, r0, c9, c12, 0 // Write 0 to PMCR to stop counters
+ 18c:	ee090f1c 	mcr	15, 0, r0, cr9, cr12, {0}
+
+    // Step 8-10: Select PMN0 and read out result into R3 (CPU CYCLES)
+    mov r0, #0 // PMN0
+ 190:	e3a00000 	mov	r0, #0
+    MCR p15, 0, R0, c9, c12, 5 // Write 0 to PMSELR
+ 194:	ee090fbc 	mcr	15, 0, r0, cr9, cr12, {5}
+    MRC p15, 0, R3, c9, c13, 2 // Read PMXEVCNTR into R3
+ 198:	ee193f5d 	mrc	15, 0, r3, cr9, cr13, {2}
+
+    // Step 8-10: Select and read out result into R11 (LOAD INSTRUCTIONS)
+    mov r7, #1 // PMN1
+ 19c:	e3a07001 	mov	r7, #1
+    MCR p15, 0, R7, c9, c12, 5 // Write 0 to PMSELR
+ 1a0:	ee097fbc 	mcr	15, 0, r7, cr9, cr12, {5}
+    MRC p15, 0, R11, c9, c13, 2 // Read PMXEVCNTR into R11
+ 1a4:	ee19bf5d 	mrc	15, 0, r11, cr9, cr13, {2}
+
+    // Step 8-10: Select and read out result into R12 (DATA CACHE MISSES)
+    mov r9, #2 // PMN2
+ 1a8:	e3a09002 	mov	r9, #2
+    MCR p15, 0, R9, c9, c12, 5 // Write 0 to PMSELR
+ 1ac:	ee099fbc 	mcr	15, 0, r9, cr9, cr12, {5}
+    MRC p15, 0, R12, c9, c13, 2 // Read PMXEVCNTR into R12
+ 1b0:	ee19cf5d 	mrc	15, 0, r12, cr9, cr13, {2}
+
+000001b4 <end>:
+end: b end // wait here
+ 1b4:	eafffffe 	b	1b4 <end>
