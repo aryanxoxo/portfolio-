@@ -1,0 +1,38 @@
+{C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/shifter.v} {1 {vlog -work work -stats=none {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/shifter.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module shifter
+
+Top level modules:
+	shifter
+
+} {} {}} {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/alu.v} {1 {vlog -work work -stats=none {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/alu.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module ALU
+-- Compiling module AddSub
+-- Compiling module Adder
+
+Top level modules:
+	ALU
+
+} {} {}} {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/regfile.v} {1 {vlog -work work -stats=none {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/regfile.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module regfile
+-- Compiling module Dec
+-- Compiling module regmux
+-- Compiling module Mux16
+-- Compiling module ANDer
+-- Compiling module vDFFE
+
+Top level modules:
+	regfile
+
+} {} {}} {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v} {0 {vlog -work work -stats=none {C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v}
+Model Technology ModelSim - Intel FPGA Edition vlog 10.5b Compiler 2016.10 Oct  5 2016
+-- Compiling module lab7_top
+** Error: (vlog-13069) C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v(23): near "==": syntax error, unexpected ==.
+** Error: (vlog-13069) C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v(35): near "==": syntax error, unexpected ==.
+-- Compiling module RAM
+-- Compiling module indevice
+-- Compiling module outdevice
+
+} {4.0 6.0} {}}

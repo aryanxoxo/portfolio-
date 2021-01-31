@@ -1,0 +1,442 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+dC:/Users/nickz/Desktop/CPEN 211/Labs/lab6
+vAdder
+Z0 !s110 1572211752
+!i10b 1
+!s100 T9jK<RBLLfaD<;Knb<ZKz2
+I6i;d;mm1RKJDJeL;[ISn>1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+Z2 dC:/Users/nickz/Desktop/CPEN 211/Labs/lab7
+Z3 w1571956554
+Z4 8C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/alu.v
+Z5 FC:/Users/nickz/Desktop/CPEN 211/Labs/lab7/alu.v
+Z6 L0 47
+Z7 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z8 !s108 1572211752.000000
+Z9 !s107 C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/alu.v|
+Z10 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/alu.v|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+n@adder
+vAddSub
+R0
+!i10b 1
+!s100 D<cD5BfLGb2nmMcFkYS8b3
+IRDPUEODk3c@zIIfjUHM0]0
+R1
+R2
+R3
+R4
+R5
+L0 32
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@add@sub
+vALU
+R0
+!i10b 1
+!s100 BTT28ZH51dRJHdRSKE`F`2
+If@5ih7[m4afN?VHLfeml?3
+R1
+R2
+R3
+R4
+R5
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+R9
+R10
+!i113 1
+R11
+R12
+n@a@l@u
+vANDer
+Z13 !s110 1572211753
+!i10b 1
+!s100 >lP<a]>bBgZAKUihheoX_3
+IHB=W:8D86@N`d45k>^DL93
+R1
+R2
+Z14 w1571942182
+Z15 8C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/regfile.v
+Z16 FC:/Users/nickz/Desktop/CPEN 211/Labs/lab7/regfile.v
+L0 68
+R7
+r1
+!s85 0
+31
+Z17 !s108 1572211753.000000
+Z18 !s107 C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/regfile.v|
+Z19 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/regfile.v|
+!i113 1
+R11
+R12
+n@a@n@der
+vcpu
+R0
+!i10b 1
+!s100 cBCGEC[c13Q16]^GiCSKT3
+I0O[XgOb]RM@1WMU`9Y[n52
+R1
+R2
+Z20 w1572210227
+Z21 8C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/cpu.v
+Z22 FC:/Users/nickz/Desktop/CPEN 211/Labs/lab7/cpu.v
+L0 2
+R7
+r1
+!s85 0
+31
+R8
+Z23 !s107 C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/cpu.v|
+Z24 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/cpu.v|
+!i113 1
+R11
+R12
+vdatapath
+R13
+!i10b 1
+!s100 h>iGBN^5Bazm9_eb9FZ6V1
+ISG2`E[AQ>c36EBXhNLA?g1
+R1
+R2
+Z25 w1572211580
+Z26 8C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/datapath.v
+Z27 FC:/Users/nickz/Desktop/CPEN 211/Labs/lab7/datapath.v
+L0 1
+R7
+r1
+!s85 0
+31
+R17
+Z28 !s107 C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/datapath.v|
+Z29 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/datapath.v|
+!i113 1
+R11
+R12
+vDec
+R13
+!i10b 1
+!s100 P_0EONHSNK21PK1oE_5701
+IFnN^X>6aILeUb5cV5C:RR2
+R1
+R2
+R14
+R15
+R16
+L0 26
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R11
+R12
+n@dec
+vInDecoder
+R0
+!i10b 1
+!s100 V[O=Ha[h9Q9GS;o2EQ8oz1
+ILY;227G<1Tcj=[SDJz6S^2
+R1
+R2
+R20
+R21
+R22
+L0 27
+R7
+r1
+!s85 0
+31
+R8
+R23
+R24
+!i113 1
+R11
+R12
+n@in@decoder
+vindevice
+R13
+!i10b 1
+!s100 1I^J0@JgAc?_6KAcaT>f:1
+IA7nKI[8WB3D`DKA:XN`TX2
+R1
+R2
+Z30 w1572211748
+Z31 8C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v
+Z32 FC:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v
+L0 74
+R7
+r1
+!s85 0
+31
+R17
+Z33 !s107 C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v|
+Z34 !s90 -reportprogress|300|-work|work|-stats=none|C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/lab7_top.v|
+!i113 1
+R11
+R12
+vMux16
+R13
+!i10b 1
+!s100 zcCObCNO>58]BPYZ4T_ZQ2
+IjVzaMUVgcLS3l;TAUz=O12
+R1
+R2
+R14
+R15
+R16
+R6
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R11
+R12
+n@mux16
+vMUX2
+R13
+!i10b 1
+!s100 T?n7F8U;E0DjfcdYK1YV`0
+Iffc<L2Y_?j?4f=Y`XKAoe2
+R1
+R2
+R25
+R26
+R27
+Z35 L0 36
+R7
+r1
+!s85 0
+31
+R17
+R28
+R29
+!i113 1
+R11
+R12
+n@m@u@x2
+vMUX4
+R13
+!i10b 1
+!s100 ]ik`COgl4Y7>GTTBa@:`e1
+I`H^_HoPjYY2RML;Uidm:=3
+R1
+R2
+R25
+R26
+R27
+Z36 L0 50
+R7
+r1
+!s85 0
+31
+R17
+R28
+R29
+!i113 1
+R11
+R12
+n@m@u@x4
+voutdevice
+R13
+!i10b 1
+!s100 `?DUfP2k7?f7UL<naB[af1
+IcY<E?gSfg0b<MlKV9mlV^3
+R1
+R2
+R30
+R31
+R32
+L0 82
+R7
+r1
+!s85 0
+31
+R17
+R33
+R34
+!i113 1
+R11
+R12
+vRAM
+R13
+!i10b 1
+!s100 8zZTe;Fj4[?=ao3XXm^T@3
+IRgFCdllnDa?EJ<5[Dlla[0
+R1
+R2
+R30
+R31
+R32
+R36
+R7
+r1
+!s85 0
+31
+R17
+R33
+R34
+!i113 1
+R11
+R12
+n@r@a@m
+vregfile
+R13
+!i10b 1
+!s100 bId:Bkofd`McBR2[z]^o30
+I_G>mKln1kEhhVKcA7lC>?1
+R1
+R2
+R14
+R15
+R16
+L0 1
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R11
+R12
+vregmux
+R13
+!i10b 1
+!s100 5HMzFTh5UeR1<hZ3alSLb3
+I1CdQDnJ5<ziBc3>i@fDPV3
+R1
+R2
+R14
+R15
+R16
+R35
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R11
+R12
+vshifter
+R0
+!i10b 1
+!s100 9lzA[`JY2aUZhh<Q]G?TL3
+IAkdfe4gKE;c_mnQoo11TE3
+R1
+R2
+w1570588057
+8C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/shifter.v
+FC:/Users/nickz/Desktop/CPEN 211/Labs/lab7/shifter.v
+L0 1
+R7
+r1
+!s85 0
+31
+R8
+!s107 C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/shifter.v|
+!s90 -reportprogress|300|-work|work|-stats=none|C:/Users/nickz/Desktop/CPEN 211/Labs/lab7/shifter.v|
+!i113 1
+R11
+R12
+vSignExtend
+R0
+!i10b 1
+!s100 HIcS8S:LGOZko<K^nAmD>3
+IBQ:;GgPon05Vf>oGVO4Im3
+R1
+R2
+R20
+R21
+R22
+L0 55
+R7
+r1
+!s85 0
+31
+R8
+R23
+R24
+!i113 1
+R11
+R12
+n@sign@extend
+vstate1
+R0
+!i10b 1
+!s100 [[6`6LWPUSmN507VIHFMD3
+Ia<99z[[Tg=jjUC?fF1J4[0
+R1
+R2
+R20
+R21
+R22
+L0 84
+R7
+r1
+!s85 0
+31
+R8
+R23
+R24
+!i113 1
+R11
+R12
+vvDFFE
+R13
+!i10b 1
+!s100 fbCdcj2mRZDzB7:I7lfVL1
+I3fDVRe]L98I>Z=h^=87H01
+R1
+R2
+R14
+R15
+R16
+L0 88
+R7
+r1
+!s85 0
+31
+R17
+R18
+R19
+!i113 1
+R11
+R12
+nv@d@f@f@e
